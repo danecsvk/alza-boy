@@ -1,6 +1,8 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const nodemailer = require('nodemailer');
+const { SocksProxyAgent } = require('socks-proxy-agent');
+const agent = new SocksProxyAgent('socks5h://127.0.0.1:9050');
 require('dotenv').config({ path: '/opt/storage/alza-boy/config.env' });
 
 const URLs = process.env.WATCHED_URLS.split(",");
@@ -8,7 +10,7 @@ const URLs = process.env.WATCHED_URLS.split(",");
 async function download(url) {
     try {
         console.log(url);
-        const response = await axios.get(url);
+        const response = await axios({url: url, httpsAgent: agent});
         const $ = cheerio.load(response.data);
 
         let onShelf = [];

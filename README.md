@@ -12,7 +12,7 @@ EMAIL_SECURE = is email secured? true/false
 EMAIL_AUTH_USER = email login
 EMAIL_AUTH_PASS = email password
 
-WATCHED_URLS=alza URLs separated by ','
+WATCHED_URLS = alza URLs separated by ','
 ```
 
 # RUN 
